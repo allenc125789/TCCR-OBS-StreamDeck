@@ -11,7 +11,7 @@ I made this as a request from my school's Robotics club. We record events freque
 
 _________
 
-### Controllers
+### Electronics
 The electronics includes a STM32 on a dev board (blackpill), and a self-made hat with a few buttons for control.
 
 ### Python Script (Driver)
