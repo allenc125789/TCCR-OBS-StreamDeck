@@ -2,7 +2,6 @@
 # Description
 
 A school project i'm sharing on github.
-</br>Blog post:
 
 This project is a 2-part system to control OBS (a livestreaming/recording software):
 + An STM32 USB-HID based Controller.
@@ -16,3 +15,7 @@ The electronics includes a STM32 on a dev board (blackpill), and a self-made hat
 
 ### Python Script (Driver)
 A python script that utilizes OBS's webcontrol system. It stores values and translates button presses from the controller into various functions for complex control over OBS.
+
+________
+
+<sup>Blog post:</sup>
