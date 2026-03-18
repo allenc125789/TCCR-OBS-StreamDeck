@@ -21,15 +21,3 @@ Libraries:
 
 ## Setup:
 Refer to the README.md, located in the file TCCR_OBS_Resources.zip, found in the TCCR Club's socialmedia gmail/gdrive...
-
-## ToDo:
-
-+ ~~Add a match/round counter, one that has 2 buttons, for making the round go up or down, then a third button to hide/show it.~~
-
-+ Add a name vs name section, with a red and blue bar background, for the bots battling. make a little red and blue pixel bot to put on the either side of it.
-
-+ add loop to wait for obs to launch. (if its delayed by a popup, itll poop out an error)
-
-+ ~~add transition between cams~~
-
-+ Add a webserver function to control starting the round, and activating a sfx for a bell.
