@@ -3,7 +3,7 @@
 
 A school project i'm sharing on github.
 
-This project is a 2-part system:
+This project is a 2-part system, to control OBS (a livestreaming/recording software):
 + An STM32 USB-HID based Controller
 + A Python script, that works as a driver.
 
