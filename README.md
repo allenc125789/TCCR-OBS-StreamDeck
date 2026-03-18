@@ -15,3 +15,5 @@ The electronics includes a STM32 on a dev board (blackpill), and a self-made hat
 
 ### Python Script (Driver)
 A python script that utilizes OBS's webcontrol system. It stores values and translates button presses from the controller into various functions for complex control over OBS.
+
+Blog post:
