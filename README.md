@@ -1,5 +1,3 @@
-<sup>Blog post:</sup>
-
 # Description
 
 A school project i'm sharing on github.
@@ -19,3 +17,4 @@ A python script that utilizes OBS's webcontrol system. It stores values and tran
 
 ________
 
+<sup>Blog post:</sup>
