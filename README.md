@@ -2,7 +2,7 @@
 # Description
 
 A school project i'm sharing on github.
-Blog post:
+</br>Blog post:
 
 This project is a 2-part system to control OBS (a livestreaming/recording software):
 + An STM32 USB-HID based Controller.
