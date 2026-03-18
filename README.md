@@ -1,3 +1,4 @@
+<sup>Blog post:</sup>
 
 # Description
 
@@ -18,4 +19,3 @@ A python script that utilizes OBS's webcontrol system. It stores values and tran
 
 ________
 
-<sup>Blog post:</sup>
