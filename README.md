@@ -3,8 +3,8 @@ Creates a small window to capture input from the controller I made. Converts sai
 
 
 
-### Libraries:
+## Libraries:
 
 [obsws](https://pypi.org/project/obsws-python/)
 
-### Setup:
+## Setup:
