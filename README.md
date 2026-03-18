@@ -10,8 +10,8 @@ This project is a 2-part system to control OBS (a livestreaming/recording softwa
 I made this as a request from my school's Robotics club. We record events frequently, and they wanted someone that could "improve and modernize the livestreams". So, along with creating graphics and resources for OBS, I also utilized my technical skills to create a controller for easy use, so others in my club can operate OBS. 
 _________
 
-## Electronics
+### Electronics
 The electronics includes a STM32 on a dev board (blackpill), and a self-made hat with a few buttons for control.
 
-## Python Script (Driver)
+### Python Script (Driver)
 A python script that utilizes OBS's webcontrol system. It stores values and translates button presses from the controller into various functions for complex control over OBS.
