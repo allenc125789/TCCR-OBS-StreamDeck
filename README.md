@@ -3,21 +3,10 @@
 
 A school project i'm sharing on github.
 
-I'm in my school's Combat Robotics Club, and have been tasked with making the live-stream look nice and professional, thanks to having previous experience with OBS and live-stream production. I also utilized my programming knowledge to make this script to help control everything!
+This project is a 2-part system:
++ An STM32 USB-HID based Controller
++ A Python script, that works as a driver.
 
-This script has 2 main benefits:
+I made this as a request from my school's Robotics club. We record events frequently, and they wanted someone that could "improve and modernize the Livestreams". So, along with creating graphics and resources for OBS, I also utilized my technical skills to create a controller for easy use and control. 
 
-+ A custom UI with the ability to control multiple sources, scenes, and effects more consistently and efficiently than the standard OBS scene/source layout.
-+ Very easy to control for someone new to OBS or doesn't know my specific scene setup.
 
-## Dependancies:
-Software:
-
-[OBS-Studio](https://obsproject.com/download), [GoPro Webcam](https://community.gopro.com/s/article/GoPro-Webcam?language=en_US#gettingstartedwithwindows)
-
-Libraries:
-
-[obsws](https://pypi.org/project/obsws-python/)
-
-## Setup:
-Refer to the README.md, located in the file TCCR_OBS_Resources.zip, found in the TCCR Club's socialmedia gmail/gdrive...
