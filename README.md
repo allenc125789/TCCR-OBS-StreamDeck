@@ -1,6 +1,7 @@
 # Description
 
-A school project i'm sharing on github.
+A school project i'm sharing on github. See it working here on YouTube:
+
 
 This project is a 2-part system to control OBS (a livestreaming/recording software):
 + An STM32 USB-HID based Controller.
@@ -8,7 +9,6 @@ This project is a 2-part system to control OBS (a livestreaming/recording softwa
 
 I made this as a request from my school's Robotics club. We record events frequently, and they wanted someone that could "improve and modernize the livestreams". So, along with creating graphics and resources for OBS, I also utilized my technical skills to create a controller for easy use, so others in my club can operate OBS. 
 
-See it working here on YouTube:
 _________
 
 ### Electronics
