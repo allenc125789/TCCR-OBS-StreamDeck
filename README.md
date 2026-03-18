@@ -1,4 +1,4 @@
-# TCCR-OBS-StreamDeck Python Driver
+# TCCR-OBS-StreamDeck Python Script (Driver)
 Creates a small window to capture input from the controller I made. Converts said inputs into OBS websocket calls.
 
 
