@@ -1,6 +1,6 @@
 # Description
 
-A school project i'm sharing on github. See it working here on YouTube:
+A school project i'm sharing on github.</br>See it working here on YouTube:
 
 
 This project is a 2-part system to control OBS (a livestreaming/recording software):
