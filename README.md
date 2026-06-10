@@ -8,3 +8,5 @@ Creates a small window to capture input from the controller I made. Converts sai
 [obsws](https://pypi.org/project/obsws-python/)
 
 ## Setup:
+
+install `obsws` through `pip`, then start the .py file through a .venv environment.
