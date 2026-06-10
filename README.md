@@ -1,5 +1,6 @@
 # TCCR-OBS-StreamDeck Python Script (Driver)
-Creates a small window to capture input from the controller I made. Converts said inputs into OBS websocket calls.
++ Renders a small GUI window with buttons to control OBS through websocket calls 
++ Uses Hotkeys to control timer software in OBS. (To capture input from the **Hardware** controller)
 
 ## Dependeancies:
 + OBS: [https://obsproject.com](https://obsproject.com)
