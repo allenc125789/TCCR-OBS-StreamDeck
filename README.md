@@ -8,7 +8,7 @@ The code for both controller's is essentially the same with slight edits. This w
 
 
 
-## STM32 Hat
+## ProtoBoard STM32 Hat
 This is just a small circuit to sit on top of the dev board, it includes some buttons, resistors and LEDs. I created 2 boards, one for controls on OBS's timer, and one for an operator who will control other functions in OBS.
 
 
