@@ -23,13 +23,17 @@ import json
 
 #Declares Paths
 cwd = os.getcwd()
-obsdir = 'C:\\Program Files\\obs-studio\\bin\\64bit\\'
 
-###Prepare
-#Waits for cameras to connect...
+try:
+    obsdir = 'C:\\Program Files\\obs-studio\\bin\\64bit\\'
 #Starts OBS.
-os.chdir(obsdir)
-obsprogram = subprocess.Popen([obsdir + 'obs64.exe'])
+    os.chdir(obsdir)
+    obsprogram = subprocess.Popen([obsdir + 'obs64.exe'])
+except:
+    print("Check if OBS is installed in 'C:\\Program Files\\obs-studio'.")
+    time.sleep(3)
+    sys.exit(1)
+
 os.chdir(cwd)
 time.sleep(5)
 
@@ -40,9 +44,8 @@ rootWarn = tk.Toplevel(root)
 rootWarn.destroy()
 fColumn = tk.Frame(root)
 fColumn.configure(background="#c4c4c4")
+tbBrackets = tk.Text(fColumn, height=1, width=3)
 tbTitle = tk.Text(fColumn, height=3, width=60)
-tbFighterOne = tk.Text(fColumn, height=1, width=3)
-tbFighterTwo = tk.Text(fColumn, height=1, width=3)
 #Prepare Round Counter
 tbRoundCount = tk.Text(fColumn, height=1, width=3)
 currentRound = 1
@@ -78,7 +81,6 @@ def resetSysVars():
     cl.set_scene_item_enabled(scene_name="Main", item_id=35, enabled=False)
     #Round-Count
     cl.set_scene_item_enabled(scene_name="Main", item_id=32, enabled=False)
-    cl.set_scene_item_enabled(scene_name="Main", item_id=51, enabled=False)
     cl.set_scene_item_enabled(scene_name="Stand-By", item_id=8, enabled=False)
 
 
@@ -90,6 +92,10 @@ def startStream():
     if (statusLive == False):
         statusLive = True
         cl = obs.ReqClient()
+        cl.set_current_program_scene("Off")
+        time.sleep(3)
+        cl.start_stream()
+        time.sleep(2)
         cl.set_current_program_scene("Trans-In")
         time.sleep(19)
         cl.set_current_program_scene("Stand-By")
@@ -104,6 +110,7 @@ def stopStream():
         cl = obs.ReqClient()
         cl.set_current_program_scene("Trans-Out")
         time.sleep(21)
+        cl.stop_stream()
         cl.set_current_program_scene("Off")
     else:
         pass
@@ -135,7 +142,7 @@ def CAM2():
     cl.set_scene_item_enabled(scene_name="Main", item_id=44, enabled=True)
 
 #Set scene to 'Main', activates group 'Timer-Ready'.
-def timerHideShow():
+def timerHideShow(self):
     global sourceTimer
     global sourceTimerStart
     cl = obs.ReqClient()
@@ -150,7 +157,7 @@ def timerHideShow():
     sourceTimer = (not sourceTimer)
     cl.set_scene_item_enabled(scene_name="Main", item_id=8, enabled=sourceTimer)
 
-def timerStart():
+def timerStart(self):
     global sourceTimer
     global sourceTimerStart
     global battleTimerStop
@@ -162,15 +169,40 @@ def timerStart():
         time.sleep(1)
     if (sourceTimerStart == True):
         resp = cl.call_vendor_request("ashmanix-countdown-timer", "period_pause", request_data=None)
-        print(f"response data: {resp}")
     else:
         resp = cl.call_vendor_request("ashmanix-countdown-timer", "period_play", request_data=None)
-        print(f"response data: {resp}")
     #TimerStart
     sourceTimerStart = (not sourceTimerStart)
     cl.set_scene_item_enabled(scene_name="Main", item_id=6, enabled=sourceTimerStart)
 
+def timerAdd(self):
+    global sourceTimer
+    global sourceTimerStart
+    global battleTimerStop
+    cl = obs.ReqClient()
+    if (sourceTimer != True):
+        #Timer
+        sourceTimer = True
+        cl.set_scene_item_enabled(scene_name="Main", item_id=8, enabled=True)
+        time.sleep(1)
+    else:
+        cl.call_vendor_request("ashmanix-countdown-timer", "add_time", {"time_to_add": "00:00:30"})
+        cl.call_vendor_request("ashmanix-countdown-timer", "period_set", request_data=None)
+        
 
+def timerSub(self):
+    global sourceTimer
+    global sourceTimerStart
+    global battleTimerStop
+    cl = obs.ReqClient()
+    if (sourceTimer != True):
+        #Timer
+        sourceTimer = True
+        cl.set_scene_item_enabled(scene_name="Main", item_id=8, enabled=True)
+        time.sleep(1)
+    else:
+        cl.call_vendor_request("ashmanix-countdown-timer", "add_time", {"time_to_add": "00:00:-30"})
+        cl.call_vendor_request("ashmanix-countdown-timer", "period_set", request_data=None)
 
 #Set scene to 'Main', activates group 'Timer-Start'.
 def roundcountHideShow():
@@ -179,11 +211,7 @@ def roundcountHideShow():
     sourceRoundCount = (not sourceRoundCount)
     if (sourceRoundCount == True):
         cl.set_scene_item_enabled(scene_name="Main", item_id=32, enabled=sourceRoundCount)
-        time.sleep(2)
-        cl.set_scene_item_enabled(scene_name="Main", item_id=51, enabled=sourceRoundCount)
     else:
-        cl.set_scene_item_enabled(scene_name="Main", item_id=51, enabled=sourceRoundCount)
-        time.sleep(2)
         cl.set_scene_item_enabled(scene_name="Main", item_id=32, enabled=sourceRoundCount)
 
 def roundUP():
@@ -196,7 +224,7 @@ def roundUP():
     tbRoundCount.insert("1.0", currentRound)
     tbRoundCount.tag_add("center", "1.0", "end")
     tbRoundCount.config(state=tk.DISABLED)
-    with open("round.txt", "w") as f:
+    with open(f"{cwd}\\Graphics\\round.txt", "w") as f:
         f.write(str(currentRound))
         f.close
 
@@ -210,7 +238,7 @@ def roundDOWN():
     tbRoundCount.insert("1.0", currentRound)
     tbRoundCount.tag_add("center", "1.0", "end")
     tbRoundCount.config(state=tk.DISABLED)
-    with open("round.txt", "w") as f:
+    with open(f"{cwd}\\Graphics\\round.txt", "w") as f:
         f.write(str(currentRound))
         f.close
 
@@ -220,6 +248,14 @@ def transitionScene():
     cl.set_scene_item_enabled(scene_name="Main", item_id=35, enabled=True)
     time.sleep(1)
     cl.set_scene_item_enabled(scene_name="Main", item_id=35, enabled=False)
+    
+    
+def saveBrackets():
+    global tbBrackets
+    bracketsText = tbBrackets.get("1.0", tk.END)
+    with open(f"{cwd}\\Graphics\\brackets.txt", "w") as f:
+        f.write(bracketsText)
+        f.close
 
 #Resets the title textbox to what's saved in the file. If none is there, one will be created.
 def resetTitle():
@@ -227,16 +263,18 @@ def resetTitle():
     global fColumn
     global tbTitle
     try:
-        f = open("title.txt", "r")
+        f = open(f"{cwd}\\Graphics\\title.txt", "r")
         titleText = f.read()
         tbTitle.delete("1.0", tk.END)
         tbTitle.insert("1.0", titleText)
+        tbTitle.delete("end-2c")
         f.close
     except:
-        with open("title.txt", "w") as f:
+        with open(f"{cwd}\\Graphics\\title.txt", "w") as f:
             titleText = "           TCC, Tulsa Community Combat Robotics            |            Event: XXXXX: 04-08-2025             |            "
             f.write(titleText)
             tbTitle.insert("1.0", titleText)
+            tbTitle.delete("end-2c")
             pass
 
 #Saves what's in the current textbox to file.
@@ -244,27 +282,23 @@ def saveTitle():
     global fColumn
     global tbTitle
     titleText = tbTitle.get("1.0", tk.END)
-    with open("title.txt", "w") as f:
+    with open(f"{cwd}\\Graphics\\title.txt", "w") as f:
         f.write(titleText)
-        f.close
-
-def saveFighters():
-    global fColumn
-    global tbFighterOne
-    global tbFighterTwo
-    fighterOneText = tbFighterOne.get("1.0", tk.END)
-    fighterTwoText = tbFighterTwo.get("1.0", tk.END)
-    with open("fighterOne.txt", "w") as f:
-        f.write(fighterOneText)
-        f.close
-    with open("fighterTwo.txt", "w") as f:
-        f.write(fighterTwoText)
         f.close
 
 #Performs a safe exit, that terminates all child services.
 def safeExit():
+    try:
+        cl = obs.ReqClient()
+        cl.stop_stream()
+    except:
+        print("Stream is already offline.")
     #Stops obs
-    os.system("taskkill /f /im obs64.exe")
+    try:
+        os.system("taskkill /f /im obs64.exe")
+        time.sleep(5)
+    except:
+        print("OBS is already closed.")
     #Stops tkinter
     root.quit()
 
@@ -324,9 +358,8 @@ def tkrenderWarning():
 def tkrender():
     global root
     global fColumn
+    global tbBrackets
     global tbTitle
-    global tbFighterOne
-    global tbFighterTwo
     root.protocol("WM_DELETE_WINDOW", disableEvent)
     root.title('TCCR OBS ScreenDeck')
     w = 695
@@ -363,6 +396,15 @@ def tkrender():
     lState.grid(row=0, column=0, sticky=tk.W+tk.E, padx=150)
 
 
+    #Textbox for Bracket Link
+#    lBrackets = tk.Label(fColumn, text="Brackets Link:", font=("Aerial", 10))
+#    lBrackets.configure(background="#c4c4c4")
+#    lBrackets.grid(row=1, column=0, sticky=tk.W+tk.W)
+#    tbBrackets.grid(row=1, column=0, sticky=tk.W+tk.E)
+#    btnBracketsSave = tk.Button(fColumn, text='Save', width=5, command=saveBrackets)
+#    btnBracketsSave.grid(row=1, column=0, sticky=tk.E+tk.E)
+
+
     #Textbox for the Stream's Title.
     tbTitle.grid(row=3, column=0, sticky=tk.W+tk.E)
     resetTitle()
@@ -386,8 +428,8 @@ def tkrender():
     btnCam1.grid(row=6, column=0, sticky=tk.W+tk.E)
     btnCam2 = tk.Button(fColumn, text='Cam 2', command=CAM2)
     btnCam2.grid(row=7, column=0, sticky=tk.W+tk.E)
-    btnCam3 = tk.Button(fColumn, text='Cam 3')
-    btnCam3.grid(row=8, column=0, sticky=tk.W+tk.E)
+#    btnCam3 = tk.Button(fColumn, text='Brackets')
+#    btnCam3.grid(row=8, column=0, sticky=tk.W+tk.E)
 
 
     #Buttons for Timer.
@@ -400,7 +442,7 @@ def tkrender():
     #Buttons for Round Count.
     froundcount = tk.Frame(fColumn, width=228, height=50, borderwidth=2, relief="solid")
     froundcount.grid(row=1, column=1, sticky=tk.W+tk.E)
-    lroundcount = tk.Label(froundcount, text="+Round-Count+", font=("Aerial", 10, "bold"))
+    lroundcount = tk.Label(froundcount, text="+Round Count+", font=("Aerial", 10, "bold"))
     lroundcount.grid(row=0, column=0, columnspan=3, sticky=tk.W+tk.E)
     btnRCToggle = tk.Button(froundcount, text='Toggle', command=roundcountHideShow)
     btnRCup = tk.Button(froundcount, text='+', command=roundUP)
@@ -414,14 +456,6 @@ def tkrender():
     #Button for sponsors to appear in Stand-By.
     btnSponsors = tk.Button(fColumn, text='Sponsors', command=toggleSponsors)
     btnSponsors.grid(row=3, column=1)
-
-    
-    #Competitor TextBox
-    tbFighterOne.grid(row=4, column=1, sticky=tk.W+tk.E)
-    btnVS = tk.Button(fColumn, text='VS', font=("Aerial", 10, "bold"), command=saveFighters)
-    btnVS.grid(row=5, column=1, sticky=tk.W+tk.E)
-    tbFighterTwo.grid(row=6, column=1, sticky=tk.W+tk.E)
-    
 
     #Button for safe exit.
     btnSafeExit = tk.Button(fColumn, text='Safe Exit', font=("Aerial", 10, "bold"), command=tkrenderWarning)
@@ -446,6 +480,11 @@ def tkrender():
     btnTitleReset.pack(side="left")
     btnTitleSave.pack(side="left")
 
+    #Listen for keyboard presses.
+    root.bind('<Control-f>', timerAdd)
+    root.bind('<Control-j>', timerSub)
+    root.bind('<Control-u>', timerStart)
+    root.bind('<Control-g>', timerHideShow)    
     #Start root GUI window.
     root.mainloop()
 
@@ -456,7 +495,7 @@ def main():
         try:
             resetSysVars()
             tkrender()
-            start = True
+            start = True 
         except Exception as e:
             time.sleep(5)
             pass
