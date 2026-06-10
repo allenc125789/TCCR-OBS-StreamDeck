@@ -17,3 +17,6 @@ Download the TCCR-OBS-ScreenDeck-dev.zip, extract, and follow the readme.
 
 ### Compiled:
 Download the TCCR-OBS-ScreenDeck-main.zip, extract, and follow the readme.
+
+_____
+<sub>Back to main: https://github.com/allenc125789/TCCR-OBS-StreamDeck/blob/main</sub>
