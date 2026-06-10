@@ -9,4 +9,5 @@ Creates a small window to capture input from the controller I made. Converts sai
 
 ## Setup:
 
-install `obsws` through `pip`, then start the .py file through a .venv environment.
+### Manual:
+Download the TCCR-OBS-ScreenDeck-dev.zip, extract, and follow the readme.
