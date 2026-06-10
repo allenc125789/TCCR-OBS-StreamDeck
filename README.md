@@ -13,4 +13,4 @@ This is just a small circuit to sit on top of the dev board, it includes some bu
 ## 3D Modeled/Printed Case
 
 _____
-<sub>Back to main: https://github.com/allenc125789/TCCR-OBS-StreamDeck/blob/main</sub>
+<sub>Back to main: https://github.com/allenc125789/TCCR-OBS-StreamDeck/tree/main</sub>
