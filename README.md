@@ -9,5 +9,8 @@ Creates a small window to capture input from the controller I made. Converts sai
 
 ## Setup:
 
-### Manual:
+### Python:
 Download the TCCR-OBS-ScreenDeck-dev.zip, extract, and follow the readme.
+
+### Compiled .exe:
+Download the TCCR-OBS-ScreenDeck-main.zip, extract, and follow the readme.
