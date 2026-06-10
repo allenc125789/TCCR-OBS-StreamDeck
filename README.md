@@ -1,4 +1,4 @@
-# TCCR-OBS-StreamDeck Electronics
+# TCCR-OBS-StreamDeck Timer Controller (Electronics)
 The electronics in my controller's are an STM32, a hat with buttons I made for it, and a 3D modeled/printed case.
 
 The reason there are 2 controllers here are just to "seperate duties" between members of my club when hosting events. Generally we have an announcer that will count down to start rounds, and I will be in control of the livestream technicals while also keeping track with the announcer... This will allow the announcer to have his own controlls for the timer system on our livestreams.
