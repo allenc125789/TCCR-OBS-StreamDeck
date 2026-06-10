@@ -12,7 +12,7 @@ I made this as a request from my school's Robotics club. We record events freque
 _________
 
 ### Electronics
-The electronics includes a STM32 on a dev board (blackpill), and a self-made hat with a few buttons for control. It acts as an HID-USB keyboard device that sends keyboard characters.
+The electronics includes a STM32 on a dev board (blackpill), and a self-made hat with a few buttons for control. It acts as an HID-USB keyboard device that sends keyboard characters to control the timer software in OBS.
 
 ### Python Script (Driver)
 A python script that utilizes OBS's webcontrol system. It stores values and translates button presses from the controllers into various functions for complex control over OBS.
